@@ -1,11 +1,15 @@
 package com.keqi.blog.interceptor;
 
+import org.springframework.ui.Model;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import static java.lang.Thread.sleep;
+
 
 public class MyInterceptor implements HandlerInterceptor {
     @Override
@@ -15,6 +19,7 @@ public class MyInterceptor implements HandlerInterceptor {
         if (httpSession.getAttribute("user") != null) {
             return true;
         } else {
+            response.sendRedirect("/login");
             return false;
         }
     }

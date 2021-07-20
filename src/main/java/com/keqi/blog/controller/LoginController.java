@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -31,23 +28,27 @@ public class LoginController {
         return "login";
     }
 
-    @GetMapping("/login")
-    public String loginController(String username, String password, Model model, HttpServletRequest request, HttpServletResponse response) {
+    @GetMapping("/login_test")
+    @ResponseBody
+    public User loginController(String username, String password, Model model, HttpServletRequest request, HttpServletResponse response) {
 
         User user = userService.getUser(username, password);
 
-        HttpSession httpSession = request.getSession();
+//        HttpSession httpSession = request.getSession();
 
         if (user != null) {
-            Cookie cookie = new Cookie("user_id","" + user.getUser_id());
-            cookie.setMaxAge(1000);
-            cookie.setPath("/login_cookie");
-            response.addCookie(cookie);
-            httpSession.setAttribute("user",user);
-            return "redirect:/main";
+//            Cookie cookie = new Cookie("user_id","" + user.getUser_id());
+//            cookie.setMaxAge(1000);
+//            cookie.setPath("/login_cookie");
+//            response.addCookie(cookie);
+//            httpSession.setAttribute("user",user);
+//            return "redirect:/main";
+
+            return user;
         } else {
-            model.addAttribute("msg", "没有这个用户");
-            return "login";
+//            model.addAttribute("msg", "没有这个用户");
+//            return "login";
+            return null;
         }
     }
 
