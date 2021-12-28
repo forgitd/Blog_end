@@ -15,5 +15,5 @@ public class Review {
     private Integer id_blog;
     private String comment;
     private Date date;
-    private Integer id_user_c;
+    private String id_user_name;
 }

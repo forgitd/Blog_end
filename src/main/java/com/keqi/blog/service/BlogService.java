@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface BlogService {
     List<Blog> queryBlogList();
+    void deleteBlogById(Integer id);
 }

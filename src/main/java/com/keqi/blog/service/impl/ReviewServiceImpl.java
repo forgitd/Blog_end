@@ -25,7 +25,17 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public boolean addReview(Integer id_blog, String comment, Date date, Integer id_user_c) {
-        return reviewMapper.addReview(id_blog, comment, date, id_user_c);
+    public boolean addReview(Integer id_blog, String comment, Date date, String id_user_name) {
+        return reviewMapper.addReview(id_blog, comment, date, id_user_name);
+    }
+
+    @Override
+    public void deleteReviewById(Integer id) {
+        reviewMapper.deleteReviewById(id);
+    }
+
+    @Override
+    public List<Review> getAllReviews() {
+        return reviewMapper.getAllReviews();
     }
 }
